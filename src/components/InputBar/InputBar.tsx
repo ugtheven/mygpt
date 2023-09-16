@@ -22,7 +22,7 @@ function InputBar() {
 
 
   return (
-    <div className="container">
+    <div className="inputContainer">
       <div className="input-box">
         <textarea
           rows={1}

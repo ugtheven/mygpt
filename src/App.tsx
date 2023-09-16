@@ -1,10 +1,10 @@
 import './App.scss'
-import InputBar from './components/InputBar/InputBar'
+import Chat from './pages/Chat/Chat'
 
 function App() {
   return (
     <div className='container'>
-      <InputBar />
+      <Chat />
     </div>
   )
 }

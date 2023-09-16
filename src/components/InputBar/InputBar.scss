@@ -1,15 +1,13 @@
-.container {
+.inputContainer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+
   position: fixed;
   left: 0;
+  right: 0;
   bottom: 0;
 
-  width: 100%;
-  height: auto;
   padding-bottom: 48px;
-
-  background-color: white;
 
   .input-box {
     display: flex;
@@ -23,6 +21,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 
     background-color: white;
+    background-image: linear-gradient(180deg,hsla(0,0%,100%,0) 13.94%,#fff 54.73%);
 
     .textarea {
       width: 100%;
