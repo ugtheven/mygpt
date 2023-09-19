@@ -3,14 +3,23 @@ import "./InputBar.scss";
 import { IoSend } from "react-icons/io5";
 import { useAppDispatch } from "../../hooks";
 import { addMessage } from "../../features/Chat/messagesSlice";
+import OpenAI from 'openai';
+import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
 
-
-function InputBar() {
+interface InputBarProps {
+  messages: ChatCompletionMessageParam[]
+}
+function InputBar({ messages: messagesList }: InputBarProps) {
   const dispatch = useAppDispatch();
   const textareaRef: React.MutableRefObject<any> = useRef(null);
 
   const [height, setHeight] = useState("auto");
   const [value, setValue] = useState("");
+
+  const openai = new OpenAI({
+    apiKey: import.meta.env.VITE_OPENAI_API_KEY || "",
+    dangerouslyAllowBrowser: true
+  });
 
   const handleTextareaChange = (e) => {
     const element = e.target;
@@ -21,7 +30,7 @@ function InputBar() {
   };
 
   //When the user presses enter without shift, the textarea will not create a new line
-  const handleKeyDown = (e) => {
+  const handleKeyDown = async (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       if (value.length !== 0) {
@@ -29,6 +38,13 @@ function InputBar() {
         setValue("");
         textareaRef.current.value = "";
       }
+
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4",
+        messages: messagesList,
+      });
+
+      dispatch(addMessage({ role: "system", content: completion.choices[0].message.content || "" }));
     }
   };
 

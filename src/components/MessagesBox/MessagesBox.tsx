@@ -1,10 +1,10 @@
 import "./MessagesBox.scss";
 import botAvatar from '../../assets/chatgpt.jpg'
 import userAvatar from '../../assets/user.png'
-import { Message } from "../../features/Chat/messagesSlice";
+import { ChatCompletionMessageParam } from "openai/resources/chat/completions.mjs";
 
 interface MessagesBoxProps {
-  messages: Message[]
+  messages: ChatCompletionMessageParam[]
 }
 function MessagesBox({ messages: messagesList }: MessagesBoxProps) {
 
