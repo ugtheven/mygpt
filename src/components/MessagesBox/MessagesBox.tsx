@@ -1,16 +1,16 @@
 import "./MessagesBox.scss";
 import botAvatar from '../../assets/chatgpt.jpg'
 import userAvatar from '../../assets/user.png'
-import { ChatCompletionMessageParam } from "openai/resources/chat/completions.mjs";
+import { Message } from "../../features/Chat/messagesSlice";
 
 interface MessagesBoxProps {
-  messages: ChatCompletionMessageParam[]
+  messages: Message[]
 }
-function MessagesBox({ messages: messagesList }: MessagesBoxProps) {
+function MessagesBox({ messages }: MessagesBoxProps) {
 
   return (
     <div className="messageContainer">
-      {messagesList.map((message, index) => (
+      {messages.map((message, index) => (
         <div className={`message ${message.role === "system" ? 'bot': ''}`} key={index}>
           {message.role === "system" &&
             <img src={botAvatar} height='32px' width='32px' />

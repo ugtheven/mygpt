@@ -1,23 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { ChatCompletionMessageParam } from 'openai/resources/chat/index.mjs'
 
+export interface Message {
+  role: string
+  content: string
+}
 export interface MessagesState {
-  messages: ChatCompletionMessageParam[]
+  messages: Message[]
 }
 
 const initialState: MessagesState = {
-  messages: [
-    {role: "user", content: "Hello, shortly tell me who are you?"},
-  ],
+  messages: [],
 }
 
 export const messagesSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
-    addMessage: (state, action: PayloadAction<ChatCompletionMessageParam>) => {
-      state.messages.push({role: action.payload.role, content: action.payload.content})
+    addMessage: (state, action: PayloadAction<Message>) => {
+      const newMessage: Message = action.payload;
+      state.messages.push(newMessage);
     },
   },
 })

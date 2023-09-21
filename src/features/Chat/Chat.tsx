@@ -4,12 +4,12 @@ import { useAppSelector } from "../../hooks";
 import "./Chat.scss";
 
 function Chat() {
-  const messagesList = useAppSelector((state) => state.messages.messages);
+  const messages = useAppSelector((state) => state.messages.messages);
 
   return (
     <div className="chatContainer">
-      <MessagesBox messages={messagesList} />
-      <InputBar messages={messagesList} />
+      <MessagesBox messages={messages} />
+      <InputBar messages={messages}/>
     </div>
   );
 }
