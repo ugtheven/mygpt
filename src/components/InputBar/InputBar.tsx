@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import "./InputBar.scss";
 import { IoSend } from "react-icons/io5";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { Message, addMessage } from "../../features/Chat/messagesSlice";;
 import axios from 'axios';
 
@@ -32,12 +32,14 @@ function InputBar({ messages }: InputBarProps) {
         setValue("");
         textareaRef.current.value = "";
 
+        const newConv = [...messages, { role: 'user', content: value }];
+
         try {
           const response = await axios.post(
             'https://api.openai.com/v1/chat/completions', 
             {
               model: "gpt-4",
-              messages: [{ role: 'user', content: value }],
+              messages: newConv,
             },
             {
               headers: {
@@ -49,7 +51,7 @@ function InputBar({ messages }: InputBarProps) {
 
           dispatch(addMessage({ role: 'system', content: response.data.choices[0].message.content }));
         } catch (error) {
-
+          console.log('error', error)
         }
       }
     }

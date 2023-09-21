@@ -9,7 +9,7 @@ function Chat() {
   return (
     <div className="chatContainer">
       <MessagesBox messages={messages} />
-      <InputBar messages={messages}/>
+      <InputBar messages={messages} />
     </div>
   );
 }
