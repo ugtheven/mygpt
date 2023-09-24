@@ -7,10 +7,12 @@ export interface Message {
 }
 export interface MessagesState {
   messages: Message[]
+  isTyping: boolean
 }
 
 const initialState: MessagesState = {
   messages: [],
+  isTyping: false,
 }
 
 export const messagesSlice = createSlice({
@@ -20,10 +22,13 @@ export const messagesSlice = createSlice({
     addMessage: (state, action: PayloadAction<Message>) => {
       state.messages.push(action.payload);
     },
+    setIsTyping: (state) => {
+      state.isTyping = !state.isTyping;
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addMessage } = messagesSlice.actions
+export const { addMessage, setIsTyping } = messagesSlice.actions
 
 export default messagesSlice.reducer
