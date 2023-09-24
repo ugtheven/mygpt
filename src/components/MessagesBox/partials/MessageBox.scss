@@ -1,0 +1,40 @@
+.messageContainer {
+  display: flex;
+
+  padding: 24px 96px;
+
+  border: 0.05rem solid #d9d9e32e;
+  box-sizing: border-box;
+
+  .botAvatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: green;
+  }
+  .userAvatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: orange;
+  }
+
+  .text {
+    white-space: pre-wrap;
+    padding: 0 96px;
+  }
+}
+.bot {
+  background-color: #f7f7f8;
+}
+.user {
+  background-color: #ffffff;
+}
