@@ -6,30 +6,10 @@
   border: 0.05rem solid #d9d9e32e;
   box-sizing: border-box;
 
-  .botAvatar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 32px;
-    height: 32px;
-
-    background-color: green;
-  }
-  .userAvatar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 32px;
-    height: 32px;
-
-    background-color: orange;
-  }
-
   .text {
+    line-height: 4px;
     white-space: pre-wrap;
-    padding: 0 96px;
+    padding: 0px 96px;
   }
 }
 .bot {

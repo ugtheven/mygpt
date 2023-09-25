@@ -1,0 +1,27 @@
+.codeBox {
+  background-color: black;
+
+  border-radius: 10px;
+  padding-bottom: 5px;
+  .codeHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 32px;
+    padding: 0 18px;
+    border-radius: 10px 10px 0px 0px;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: #d1d1dc;
+    background-color: #343541;
+
+    .copyButton {
+      display: flex;
+      align-items: center;
+
+      cursor: pointer;
+    }
+  }
+}

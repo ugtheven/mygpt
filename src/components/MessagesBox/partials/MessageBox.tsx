@@ -1,33 +1,29 @@
 import "./MessageBox.scss";
 import { Message } from "../../../features/Chat/messagesSlice";
-import { CodeBlock, dracula } from "react-code-blocks";
+// import { CodeBlock, irBlack } from "react-code-blocks";
 import { getAvatar } from "../../../utils/getAvatar";
 import { splitMarkdownInMessage } from "../../../utils/splitMarkdownInMessage";
+import CodeBox from "../../CodeBox/CodeBox";
 
 interface MessageBoxProps {
-  message: Message
+  message: Message;
 }
 function MessageBox({ message }: MessageBoxProps) {
-  const splitedMessage: { paragraph: string, type: string }[] = splitMarkdownInMessage(message.content)
+  const splitedMessage: { paragraph: string; type: string }[] =
+    splitMarkdownInMessage(message.content);
 
   return (
-    <div className={`messageContainer ${message.role === "system" ? 'bot': ''}`}>
-      <img src={getAvatar(message.role)} height='32px' width='32px' />
+    <div
+      className={`messageContainer ${message.role === "system" ? "bot" : ""}`}
+    >
+      <img src={getAvatar(message.role)} height="36px" width="36px" />
       <div className="text">
         {splitedMessage.map((line, index) => (
           <div key={index}>
-            {line.type !== 'text' &&
-              <CodeBlock
-              language={line.type}
-              text={line.paragraph}
-              showLineNumbers={true}
-              theme={dracula}
-              wrapLongLines={true}
-              />
-            }
-            {line.type === 'text' &&
-              <p>{line.paragraph}</p>
-            }
+            {line.type !== "text" && (
+              <CodeBox paragraph={line.paragraph} type={line.type} />
+            )}
+            {line.type === "text" && <p>{line.paragraph}</p>}
           </div>
         ))}
       </div>
