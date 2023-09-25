@@ -1,6 +1,6 @@
 import "./MessageBox.scss";
 import { Message } from "../../../features/Chat/messagesSlice";
-import { CopyBlock, nord } from "react-code-blocks";
+import { CodeBlock, dracula } from "react-code-blocks";
 import { getAvatar } from "../../../utils/getAvatar";
 import { splitMarkdownInMessage } from "../../../utils/splitMarkdownInMessage";
 
@@ -17,12 +17,12 @@ function MessageBox({ message }: MessageBoxProps) {
         {splitedMessage.map((line, index) => (
           <div key={index}>
             {line.type !== 'text' &&
-              <CopyBlock
-                text={line.paragraph}
-                showLineNumbers={false}
-                codeBlock
-                language={line.type}
-                theme={nord}
+              <CodeBlock
+              language={line.type}
+              text={line.paragraph}
+              showLineNumbers={true}
+              theme={dracula}
+              wrapLongLines={true}
               />
             }
             {line.type === 'text' &&
