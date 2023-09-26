@@ -1,0 +1,94 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 260px;
+  height: 100%;
+
+  padding: 0 8px;
+  background-color: #202123;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px 0;
+
+    .newButton {
+      display: flex;
+      align-items: center;
+
+      height: 44px;
+      width: 160px;
+      padding-left: 12px;
+
+      color: white;
+      border: 0.05rem solid #d9d9e32e;
+      border-radius: 5px;
+      cursor: pointer;
+
+      span {
+        height: 16px;
+        line-height: 16px;
+        font-size: 14px;
+
+        padding-left: 8px;
+      }
+    }
+
+    .closeButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 44px;
+      width: 44px;
+
+      color: white;
+      border: 0.05rem solid #d9d9e32e;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .conversations {
+    height: 100%;
+
+    .conversation {
+      display: flex;
+      align-items: center;
+
+      height: 20px;
+      padding: 12px 12px;
+
+      font-weight: 300;
+      color: white;
+      border-radius: 8px;
+
+      span {
+        padding-left: 8px;
+      }
+      &:hover {
+        background-color: #343541c8;
+      }
+      .active {
+        background-color: #343541;
+      }
+    }
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+
+    height: 36px;
+    padding: 20px 12px;
+
+    color: white;
+    span {
+      padding-left: 12px;
+    }
+  }
+}
