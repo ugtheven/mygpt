@@ -21,12 +21,12 @@
       align-items: center;
 
       height: 44px;
-      width: 160px;
+      width: 174px;
       padding-left: 12px;
 
       color: white;
-      border: 0.05rem solid #d9d9e32e;
-      border-radius: 5px;
+      border: 0.05rem solid #4d4d4f;
+      border-radius: 6px;
       cursor: pointer;
 
       span {
@@ -34,7 +34,7 @@
         line-height: 16px;
         font-size: 14px;
 
-        padding-left: 8px;
+        padding-left: 12px;
       }
     }
 
@@ -47,8 +47,8 @@
       width: 44px;
 
       color: white;
-      border: 0.05rem solid #d9d9e32e;
-      border-radius: 5px;
+      border: 0.05rem solid #4d4d4f;
+      border-radius: 6px;
       cursor: pointer;
     }
   }
@@ -56,39 +56,89 @@
   .conversations {
     height: 100%;
 
+    border-bottom: 1px solid #4d4d4f;
+    overflow: auto;
+
+    .date {
+      padding: 8px 0px 8px 12px;
+
+      font-size: 12px;
+      font-weight: 600;
+      color: #8e8ea0;
+    }
     .conversation {
       display: flex;
+      justify-content: space-between;
       align-items: center;
 
       height: 20px;
       padding: 12px 12px;
 
-      font-weight: 300;
-      color: white;
+      font-weight: 400;
+      font-size: 15px;
+      color: #e1e1e6;
       border-radius: 8px;
 
+      cursor: pointer;
+
       span {
-        padding-left: 8px;
+        width: 170px;
+        margin: 0 12px;
+
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
       }
       &:hover {
-        background-color: #343541c8;
+        background-color: #34354175;
       }
-      .active {
-        background-color: #343541;
+      &.active {
+        background-color: #343541c8;
+        span {
+          width: 130px;
+        }
+      }
+      .button {
+        cursor: pointer;
+        transition: 0.2s;
+
+        margin: 0 4px;
+
+        &:hover {
+          stroke: white;
+        }
       }
     }
   }
 
-  .profile {
-    display: flex;
-    align-items: center;
+  .footer {
+    padding: 8px 4px;
 
-    height: 36px;
-    padding: 20px 12px;
+    .profile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-    color: white;
-    span {
-      padding-left: 12px;
+      height: 36px;
+      padding: 12px 8px;
+
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+
+      &:hover {
+        background-color: #34354175;
+      }
+      span {
+        width: 140px;
+
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        font-size: 14px;
+        font-weight: 600;
+      }
     }
   }
 }
