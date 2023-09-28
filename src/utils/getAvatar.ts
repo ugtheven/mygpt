@@ -1,10 +1,10 @@
-import botAvatar from '../assets/chatgpt.jpg'
-import userAvatar from '../assets/user.png'
+import botAvatar from "../assets/chatgpt.jpg";
+import userAvatar from "../assets/user.png";
 
 export function getAvatar(role: string) {
   if (role === "system") {
-    return botAvatar
+    return botAvatar;
   } else {
-    return userAvatar
+    return userAvatar;
   }
 }

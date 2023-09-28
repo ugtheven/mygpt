@@ -1,22 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Message {
-  role: string
-  content: string
+  role: string;
+  content: string;
 }
 export interface MessagesState {
-  messages: Message[]
-  isTyping: boolean
+  messages: Message[];
+  isTyping: boolean;
 }
 
 const initialState: MessagesState = {
   messages: [],
   isTyping: false,
-}
+};
 
 export const messagesSlice = createSlice({
-  name: 'messages',
+  name: "messages",
   initialState,
   reducers: {
     addMessage: (state, action: PayloadAction<Message>) => {
@@ -24,11 +24,10 @@ export const messagesSlice = createSlice({
     },
     setIsTyping: (state) => {
       state.isTyping = !state.isTyping;
-    }
+    },
   },
-})
+});
 
-// Action creators are generated for each case reducer function
-export const { addMessage, setIsTyping } = messagesSlice.actions
+export const { addMessage, setIsTyping } = messagesSlice.actions;
 
-export default messagesSlice.reducer
+export default messagesSlice.reducer;

@@ -1,14 +1,14 @@
-import './App.scss'
-import Navbar from './components/Navbar/Navbar'
-import Chat from './features/Chat/Chat'
+import "./App.scss";
+import Navbar from "./components/Navbar/Navbar";
+import Chat from "./features/Chat/Chat";
 
 function App() {
   return (
-    <div className='container'>
+    <div className="container">
       <Navbar />
       <Chat />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

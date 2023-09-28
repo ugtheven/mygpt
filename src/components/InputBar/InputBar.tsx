@@ -2,11 +2,15 @@ import { useCallback, useRef, useState } from "react";
 import "./InputBar.scss";
 import { IoSend } from "react-icons/io5";
 import { useAppDispatch } from "../../hooks";
-import { Message, addMessage, setIsTyping } from "../../features/Chat/messagesSlice";;
-import axios from 'axios';
+import {
+  Message,
+  addMessage,
+  setIsTyping,
+} from "../../features/Chat/messagesSlice";
+import axios from "axios";
 
 interface InputBarProps {
-  messages: Message[]
+  messages: Message[];
 }
 function InputBar({ messages }: InputBarProps) {
   const dispatch = useAppDispatch();
@@ -17,27 +21,34 @@ function InputBar({ messages }: InputBarProps) {
 
   //Send the message to the bot and get the response
   const getBotResponse = useCallback(async () => {
-    const newConv = [...messages, { role: 'user', content: value }];
+    const newConv = [...messages, { role: "user", content: value }];
 
     try {
       dispatch(setIsTyping());
-      
+
       const response = await axios.post(
-        'https://api.openai.com/v1/chat/completions', 
+        "https://api.openai.com/v1/chat/completions",
         {
           model: "gpt-4",
           messages: newConv,
         },
         {
           headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY || ""}`,
-            'Content-Type': 'application/json'
-          }
+            Authorization: `Bearer ${
+              import.meta.env.VITE_OPENAI_API_KEY || ""
+            }`,
+            "Content-Type": "application/json",
+          },
         }
       );
-      dispatch(addMessage({ role: 'system', content: response.data.choices[0].message.content }));
+      dispatch(
+        addMessage({
+          role: "system",
+          content: response.data.choices[0].message.content,
+        })
+      );
     } catch (error) {
-      console.log('error', error)
+      console.log("error", error);
     } finally {
       dispatch(setIsTyping());
     }
@@ -53,28 +64,30 @@ function InputBar({ messages }: InputBarProps) {
   }, []);
 
   //When the user presses enter without shift, the textarea will not create a new line
-  const handleKeyDown = useCallback(async (e: any) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      if (value.length !== 0) {
-        dispatch(addMessage({ role: 'user', content: value }));
-        setValue("");
-        textareaRef.current.value = "";
-        getBotResponse();
+  const handleKeyDown = useCallback(
+    async (e: any) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        if (value.length !== 0) {
+          dispatch(addMessage({ role: "user", content: value }));
+          setValue("");
+          textareaRef.current.value = "";
+          getBotResponse();
+        }
       }
-    }
-  }, [value]);
+    },
+    [value]
+  );
 
   //Send button callback
   const handleClick = useCallback(() => {
     if (value.length !== 0) {
-      dispatch(addMessage({ role: 'user', content: value }));
+      dispatch(addMessage({ role: "user", content: value }));
       setValue("");
       textareaRef.current.value = "";
       getBotResponse();
     }
   }, [value]);
-
 
   return (
     <div className="inputContainer">
@@ -89,7 +102,12 @@ function InputBar({ messages }: InputBarProps) {
           onKeyDown={handleKeyDown}
         ></textarea>
 
-        <div className={`send ${value.length > 0 ? 'active' : ''}`} onClick={handleClick}><IoSend /></div>
+        <div
+          className={`send ${value.length > 0 ? "active" : ""}`}
+          onClick={handleClick}
+        >
+          <IoSend />
+        </div>
       </div>
     </div>
   );

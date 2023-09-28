@@ -1,10 +1,10 @@
-import './HeaderBar.scss'
+import "./HeaderBar.scss";
 
 function HeaderBar() {
   return (
     <div className="headerContainer">
-        <label>Default (GPT-4)</label>
-      </div>
+      <label>MyGPT (GPT-4)</label>
+    </div>
   );
 }
 
